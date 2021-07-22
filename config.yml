@@ -1,0 +1,12 @@
+business_db:
+  username: sa
+  password: 123456
+  ip: 127.0.0.1
+  port: 3306
+  dbname: test_db
+log_db:
+  username: admin
+  password: 123456
+  ip: 127.0.0.1
+  port: 27017
+  dbname: test_log_db
