@@ -6,6 +6,8 @@ import (
 	"io/ioutil"
 )
 
+const configYML = "HelheimConfig.yml"
+
 type Config struct {
 	LogDB ConnectString `yaml:"log_db"`
 }
@@ -21,7 +23,7 @@ type ConnectString struct {
 var item *Config
 
 func getConfig() {
-	data, err := ioutil.ReadFile("config.yml")
+	data, err := ioutil.ReadFile(configYML)
 	if err != nil {
 		fmt.Println(err)
 	}
