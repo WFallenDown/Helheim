@@ -27,7 +27,7 @@ var (
 	mutex   sync.Mutex  // 写入锁
 )
 
-func Init() {
+func init() {
 
 	Trace = log.New(ioutil.Discard,
 		"TRACE: ",
@@ -44,6 +44,7 @@ func Init() {
 	Error = log.New(os.Stdout,
 		"ERROR: ",
 		log.Ldate|log.Ltime)
+
 }
 
 func Writer(l *log.Logger, mess interface{}) error {
