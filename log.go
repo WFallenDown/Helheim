@@ -17,14 +17,20 @@ const (
 	FORMAT = "20060102"
 	//LineFeed 换行
 	LineFeed = "\r\n"
+
+	Mongo     = "Mongo"
+	MySQL     = "MySQL"
+	SQLServer = "SQLServer"
 )
 
 var (
-	Trace   *log.Logger // 记录所有日志
-	Info    *log.Logger // 重要的信息
-	Warning *log.Logger // 需要注意的信息
-	Error   *log.Logger // 非常严重的问题
-	mutex   sync.Mutex  // 写入锁
+	Trace    *log.Logger // 记录所有日志
+	Info     *log.Logger // 重要的信息
+	Warning  *log.Logger // 需要注意的信息
+	Error    *log.Logger // 非常严重的问题
+	mutex    sync.Mutex  // 写入锁
+	dbInsert = false
+	dbName   = Mongo
 )
 
 func init() {
@@ -67,7 +73,9 @@ func Writer(l *log.Logger, mess interface{}) error {
 	l.Println(fileName, line, mess)
 	fmt.Println(fileName, line, mess)
 
-	InsertLog(fileName, line, mess)
+	/*if dbInsert {
+		insertLog(fileName, line, mess)
+	}*/
 
 	mutex.Unlock()
 	return nil
