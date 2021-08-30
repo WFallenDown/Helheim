@@ -73,9 +73,9 @@ func Writer(l *log.Logger, mess interface{}) error {
 	l.Println(fileName, line, mess)
 	fmt.Println(fileName, line, mess)
 
-	if dbInsert {
-		insertLog(fileName, line, mess)
-	}
+	// if dbInsert {
+	// 	insertLog(fileName, line, mess)
+	// }
 
 	mutex.Unlock()
 	return nil
